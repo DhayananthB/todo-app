@@ -1,7 +1,10 @@
+import Header from "./components/Header";
+import Tasks from "./components/Tasks";
 const App = ()=>{
   return(
     <div>
-      <h1>To Do App</h1>
+      <Header/>
+      <Tasks/>
     </div>
   )
 }
