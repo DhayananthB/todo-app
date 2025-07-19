@@ -1,4 +1,4 @@
-const List = ({ task, onToggle }) => {
+const List = ({ task, onToggle, onDelete }) => {
   return (
     <div>
       {task.task}
@@ -7,6 +7,7 @@ const List = ({ task, onToggle }) => {
         checked={task.isCompleted}
         onChange={() => onToggle(task.id)}
       />
+      <button onClick={() => onDelete(task.id)}>Delete</button>
     </div>
   );
 };
