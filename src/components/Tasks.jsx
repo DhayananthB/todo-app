@@ -8,6 +8,11 @@ const Tasks = () => {
   const [newTask, setNewTask] = useState("");
 
   const handleClick = () => {
+    if (newTask.trim() === "") {
+      alert("Task cannot be empty!");
+      return;
+    }
+
     setTasks([
       ...tasks,
       {
@@ -24,6 +29,16 @@ const Tasks = () => {
       tasks.map((task) =>
         task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
       )
+    );
+  };
+
+  const saveTask = (id, ntask) => {
+    if (ntask.trim() === "") {
+      alert("Task cannot be empty!");
+      return;
+    }
+    setTasks(
+      tasks.map((task) => (task.id === id ? { ...task, task: ntask } : task))
     );
   };
 
@@ -45,6 +60,7 @@ const Tasks = () => {
           key={task.id}
           onToggle={toggle}
           onDelete={deleteTask}
+          onSave={saveTask}
         />
       ))}
     </div>
