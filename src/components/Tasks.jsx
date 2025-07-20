@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import List from "./List";
-let ptr = 1;
+
 const Tasks = () => {
+  const ptr = useRef(2);
   const [tasks, setTasks] = useState([
     { id: 0, task: "read", isCompleted: false },
   ]);
@@ -16,7 +17,7 @@ const Tasks = () => {
     setTasks([
       ...tasks,
       {
-        id: ptr++,
+        id: ptr.current++,
         task: newTask,
         isCompleted: false,
       },
