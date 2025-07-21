@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
 const Header = ()=>{
     return(  
         <div style={{display:"flex",justifyContent:"space-between"}}>
             <div>To Do App</div>
             <div>
                 Home
-                About 
+                <Link to="about">About</Link>
+               
             </div>
         </div>
     )
