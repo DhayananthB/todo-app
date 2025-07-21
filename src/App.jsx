@@ -1,10 +1,10 @@
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
-const App = ()=>{
-  return(
+const App = () => {
+  return (
     <div>
-      <Header/>
-      <Tasks/>
+      <Header />
+      <Tasks />
     </div>
   )
 }
