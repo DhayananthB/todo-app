@@ -6,7 +6,7 @@ import App from "./App";
 
 const appRouter = createBrowserRouter([
     {
-        path: "/todo-app",
+        path: "/",
         element: <App />,
         errorElement: <Error />,
         children: [
@@ -14,5 +14,7 @@ const appRouter = createBrowserRouter([
             { path: "about", element: <About /> }
         ]
     }
-])
+], {
+    basename: "/todo-app"  
+})
 export default appRouter;
