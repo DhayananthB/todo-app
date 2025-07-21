@@ -1,11 +1,14 @@
 import Header from "./components/Header";
-import Tasks from "./components/Tasks";
+import { Outlet } from "react-router-dom";
+
 const App = () => {
   return (
     <div>
       <Header />
-      <Tasks />
+      <Outlet/>
     </div>
   )
 }
 export default App;
+
+
