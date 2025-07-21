@@ -10,11 +10,9 @@ const appRouter = createBrowserRouter([
         element: <App />,
         errorElement: <Error />,
         children: [
-            { index: true, element: <Tasks /> },
-            { path: "about", element: <About /> }
+            { path: "/", element: <Tasks /> },
+            { path: "/about", element: <About /> }
         ]
     }
-], {
-    basename: "/todo-app"  
-})
+])
 export default appRouter;
