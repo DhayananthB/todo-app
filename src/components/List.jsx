@@ -8,7 +8,7 @@ const List = ({ task, onToggle, onDelete, onSave }) => {
       <input
         type="checkbox"
         checked={task.isCompleted}
-        onChange={() => onToggle(task.id)}
+        onChange={() => onToggle(task.id,task.isCompleted)}
       />
       {isEditing ? (
         <>
