@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
     const [name, setName] = useState("");
@@ -16,24 +15,56 @@ const Register = () => {
             const userCred = await createUserWithEmailAndPassword(auth, email, password);
             await updateProfile(userCred.user, { displayName: name });
             navigate("/");
-        }
-        catch(err){
+        } catch (err) {
             alert(err.message);
         }
-        
-    }
+    };
 
     return (
-        <div>
-            <form onSubmit={handleRegister}>
-                <input type="text" placeholder="Name" required value={name} onChange={(e) => setName(e.target.value)} />
-                <input type="email" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)} />
-                <input type="password" placeholder="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
-                <button type="submit">Register</button>
-            </form>
-            <p>Already have an account? <Link to="/login">Login</Link></p>
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 px-4">
+            <div className="w-full max-w-sm bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <h2 className="text-2xl font-semibold text-center text-gray-800 dark:text-gray-100 mb-6">Register</h2>
+                <form onSubmit={handleRegister} className="space-y-4">
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className="w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <button
+                        type="submit"
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition duration-200"
+                    >
+                        Register
+                    </button>
+                </form>
+                <p className="mt-4 text-center text-gray-600 dark:text-gray-300 text-sm">
+                    Already have an account?{" "}
+                    <Link to="/login" className="text-blue-600 dark:text-blue-400 hover:underline">
+                        Login
+                    </Link>
+                </p>
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export default Register;
